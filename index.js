@@ -12,6 +12,8 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
+const CLIENT_URL = "https://shopping-app-pfyj.onrender.com";
+
 app.post("/create-checkout-session", async (req, res) => {
 	const line_items = req.body.cartItems.map((item) => {
 		return {
@@ -33,8 +35,8 @@ app.post("/create-checkout-session", async (req, res) => {
 	const session = await stripe.checkout.sessions.create({
 		line_items,
 		mode: "payment",
-		success_url: `${process.env.CLIENT_URL}/successful`,
-		cancel_url: `${process.env.CLIENT_URL}/cancel`,
+		success_url: `${CLIENT_URL}/successful`,
+		cancel_url: `${CLIENT_URL}/cancel`,
 	});
 
 	res.send({ url: session.url });
