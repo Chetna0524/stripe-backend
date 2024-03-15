@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-const CLIENT_URL = "https://shopping-app-pfyj.onrender.com";
+const CLIENT_URL = "https://shopping-app-2.onrender.com";
 
 app.post("/create-checkout-session", async (req, res) => {
 	const line_items = req.body.cartItems.map((item) => {
